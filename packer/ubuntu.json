@@ -1,0 +1,29 @@
+{
+  "builders": [
+    {
+      "type": "virtualbox-iso",
+      "guest_os_type": "Ubuntu_64",
+      "iso_url": "https://releases.ubuntu.com/22.04/ubuntu-22.04-live-server-amd64.iso",
+      "iso_checksum": "SHA256:7fa9b2d1cfb8cbcb16e64b75c510f4b98b2f7c4a5652d650e9a52d6a0fd645ed",
+      "vm_name": "ubuntu-packer-vagrant",
+      "disk_size": 40960,
+      "cpus": 2,
+      "memory": 2048,
+      "ssh_username": "ubuntu",
+      "ssh_password": "packer",
+      "ssh_timeout": "30m",
+      "shutdown_command": "echo 'packer' | sudo -S shutdown -P now",
+      "output_directory": "output-vagrant"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "inline": [
+        "sudo apt-get update",
+        "sudo apt-get install -y nginx",
+        "echo 'Hello from Packer!' | sudo tee /var/www/html/index.html"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<unattend xmlns="urn:schemas-microsoft-com:unattend">
+	<settings pass="windowsPE">
+		<component name="Microsoft-Windows-Setup" processorArchitecture="amd64" publicKeyToken="..."
+			xmlns="urn:schemas-microsoft-com:unattend">
+			<ImageInstall>
+				<OSImage>
+					<InstallFrom>
+						<Media>\sources\install.wim</Media>
+					</InstallFrom>
+				</OSImage>
+			</ImageInstall>
+		</component>
+	</settings>
+	<settings pass="specialize">
+		<component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="..."
+			xmlns="urn:schemas-microsoft-com:unattend">
+			<ComputerName>WindowsServer</ComputerName>
+		</component>
+	</settings>
+	<settings pass="oobeSystem">
+		<component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="..."
+			xmlns="urn:schemas-microsoft-com:unattend">
+			<FirstLogonCommands>
+				<SynchronousCommand>
+					<CommandLine>cmd /c start /wait C:\Scripts\SetupComplete.cmd</CommandLine>
+					<Description>Run post-installation script</Description>
+					<Order>1</Order>
+				</SynchronousCommand>
+			</FirstLogonCommands>
+		</component>
+	</settings>
+</unattend>

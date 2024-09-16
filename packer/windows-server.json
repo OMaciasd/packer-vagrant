@@ -1,0 +1,13 @@
+{
+  "builders": [
+    {
+      "type": "virtualbox-iso",
+      "iso_url": "https://releases.ubuntu.com/20.04/ubuntu-20.04.1-live-server-amd64.iso",
+      "iso_checksum": "sha256:5f1328d604e1d3dcb43e59a8b5d054f3d3d1c4c77f4c26dd2d0f2089d2db8c76",
+      "output_directory": "output-example",
+      "disk_size": 61440,
+      "shutdown_command": "shutdown /s /t 10",
+      "headless": false
+    }
+  ]
+}
